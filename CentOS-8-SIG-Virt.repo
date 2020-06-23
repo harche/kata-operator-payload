@@ -1,0 +1,5 @@
+[centos-advanced-virtualization]
+name=CentOS-8 - Advanced Virtualization
+baseurl=http://mirror.centos.org/$contentdir/$releasever/virt/$basearch/advanced-virtualization
+gpgcheck=0
+enabled=1
