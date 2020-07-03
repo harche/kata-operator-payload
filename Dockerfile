@@ -12,12 +12,6 @@ WORKDIR /usr/src/kata-containers
 RUN dnf install -y createrepo
 RUN mkdir packages
 
-
-RUN dnf install -y --downloadonly --downloaddir=/usr/src/kata-containers/packages \
-    kernel \
-    kernel-modules \
-    kernel-modules-extra
-
 RUN dnf module disable -y virt:rhel
 
 RUN dnf install -y --downloadonly --downloaddir=/usr/src/kata-containers/packages \
