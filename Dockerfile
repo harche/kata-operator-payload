@@ -17,7 +17,7 @@ RUN dnf module disable -y virt:rhel
 RUN dnf install -y --downloadonly --downloaddir=/usr/src/kata-containers/packages \
     qemu-kvm
 
-#Needed the packages are installed by default on CentOS:8.2.2004, while
+#Needed as these packages are installed by default on CentOS:8.2.2004, while
 #they're **not** #present on a RHCOS installation 
 RUN dnf reinstall -y --downloadonly --downloaddir=/usr/src/kata-containers/packages \
     snappy \
