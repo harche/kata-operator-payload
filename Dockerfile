@@ -27,6 +27,9 @@ RUN dnf install -y --downloadonly --downloaddir=/usr/src/kata-containers/package
     kata-runtime \
     kata-osbuilder
 
+#We don't need kata-shim installed on OpenShift
+RUN rm /usr/src/kata-containers/packages/kata-shim*.rpm
+
 RUN ls -lR /usr/src/kata-containers/
 RUN createrepo /usr/src/kata-containers/packages
 
