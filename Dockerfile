@@ -43,7 +43,6 @@ WORKDIR /
 
 COPY --from=katapackages /usr/src/kata-containers/packages  packages/
 
-COPY CentOS-8-Virt-SIG-Advanced-Virtualization.repo .
 COPY packages.repo .
 COPY kata-cleanup.sh .
 
