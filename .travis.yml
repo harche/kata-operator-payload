@@ -1,0 +1,14 @@
+os: linux
+dist: bionic
+language: generic
+services:
+  - docker
+before_script:
+  - bash hack/prepare.sh
+deploy:
+  - provider: script
+    script: bash hack/deploy.sh
+    cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^(ocp-.*|master)$
