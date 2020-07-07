@@ -1,6 +1,6 @@
 FROM centos:8.2.2004 as katapackages
 
-ADD CentOS-8-SIG-Virt.repo /etc/yum.repos.d/CentOS-8-SIG-Virt.repo
+ADD CentOS-8-Virt-SIG-Advanced-Virtualization.repo /etc/yum.repos.d/CentOS-8-Virt-SIG-Advanced-Virtualization.repo
 
 WORKDIR /etc/yum.repos.d
 RUN curl -O https://copr.fedorainfracloud.org/coprs/fidencio/kata-containers/repo/epel-8/fidencio-kata-containers-epel-8.repo
@@ -45,7 +45,7 @@ WORKDIR /
 
 COPY --from=katapackages /usr/src/kata-containers/packages  packages/
 
-COPY CentOS-8-SIG-Virt.repo .
+COPY CentOS-8-Virt-SIG-Advanced-Virtualization.repo .
 COPY packages.repo .
 COPY kata-cleanup.sh .
 
