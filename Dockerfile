@@ -1,9 +1,7 @@
 FROM centos:8.2.2004 as katapackages
 
-ADD CentOS-8-SIG-Virt.repo /etc/yum.repos.d/CentOS-8-SIG-Virt.repo
-
-WORKDIR /etc/yum.repos.d
-RUN curl -O https://copr.fedorainfracloud.org/coprs/fidencio/kata-containers/repo/epel-8/fidencio-kata-containers-epel-8.repo
+ADD CentOS-8-Virt-SIG-Advanced-Virtualization.repo /etc/yum.repos.d/CentOS-8-Virt-SIG-Advanced-Virtualization.repo
+ADD CentOS-8-Virt-SIG-Kata-Containers.repo /etc/yum.repos.d/CentOS-8-Virt-SIG-Kata-Containers.repo
 
 WORKDIR /usr/src/kata-containers
 
@@ -27,6 +25,9 @@ RUN dnf install -y --downloadonly --downloaddir=/usr/src/kata-containers/package
     kata-runtime \
     kata-osbuilder
 
+#We don't need kata-shim installed on OpenShift
+RUN rm /usr/src/kata-containers/packages/kata-shim*.rpm
+
 RUN ls -lR /usr/src/kata-containers/
 RUN createrepo /usr/src/kata-containers/packages
 
@@ -42,7 +43,6 @@ WORKDIR /
 
 COPY --from=katapackages /usr/src/kata-containers/packages  packages/
 
-COPY CentOS-8-SIG-Virt.repo .
 COPY packages.repo .
 COPY kata-cleanup.sh .
 
