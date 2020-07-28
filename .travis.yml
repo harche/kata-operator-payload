@@ -11,4 +11,4 @@ deploy:
     cleanup: true
     on:
       all_branches: true
-      condition: $TRAVIS_BRANCH =~ ^(ocp-.*|master)$
+      condition: $TRAVIS_BRANCH =~ ^(release-.*|master)$
